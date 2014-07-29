@@ -11,8 +11,8 @@
 }
 
 
-::selection { background: rgba(194, 226, 89, 0.4) }
-::-moz-selection { background: rgba(194, 226, 89, 0.4) }
+::selection      { background: rgba(185, 224, 102, 1) }
+::-moz-selection { background: rgba(185, 224, 102, 1) }
 
 body {
 	font-size: 0.875em;

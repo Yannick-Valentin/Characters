@@ -4,32 +4,6 @@ var button = document.getElementById('convert'),
 	output = document.getElementById('output');
 
 
-// Fonction de conversion
-escapeHtmlEntities = function (txt) {
-
-	// E
-	txt = txt.replace(/é/g, '&eacute;');
-	txt = txt.replace(/è/g, '&egrave;');
-	txt = txt.replace(/ê/g, '&ecirc;');
-	txt = txt.replace(/ë/g, '&euml;');
-
-	// A
-	txt = txt.replace(/à/g, '&agrave;');
-
-	// I
-	txt = txt.replace(/ï/g, '&iuml;');
-	txt = txt.replace(/î/g, '&icirc;');
-
-	// O
-	txt = txt.replace(/ö/g, '&ouml;');
-	txt = txt.replace(/ô/g, '&ocirc;');
-
-	// C
-	txt = txt.replace(/ç/g, '&ccedil;');
-
-	return txt;
-}
-
 // Fonction de conversion avec highlight
 escapeHtmlEntitiesSpan = function (txt) {
 	var txt = txt;
@@ -152,19 +126,40 @@ escapeHtmlEntitiesSpan = function (txt) {
 		//txt = txt.replace(re, '<span class="hl">' + chars[i] + '</span>');
 
 		txt = txt.split(i).join('<span class="hl">' + chars[i] + '</span>');
-
 	}
 
 	return txt;
 }
 
-// Convertit les entités HTML
-button.onclick = function() {	
 
+// Fonction qui convertit les entités HTML
+function convert() {	
 	output.innerHTML = escapeHtmlEntitiesSpan(input.value);
-
 	return false;
+}
 
+
+// Lancement de la fonction de conversion
+
+// bouton
+button.onclick = function() {
+	convert();
+	return false;
+}
+
+
+// Clavier (ctrl+> ou ctrl+space)
+var isCtrl = false;
+
+document.onkeyup=function(e) {
+	if( e.which == 17 ) isCtrl = false;
+}
+document.onkeydown=function(e) {
+	if( e.which == 17 ) isCtrl = true;
+	if( e.which == 32 && isCtrl == true || e.which == 39 && isCtrl == true ) {
+		convert();
+		return false;
+	}
 }
 
 // Selectionne tout le contenu au clic
