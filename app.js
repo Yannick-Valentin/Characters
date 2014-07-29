@@ -4,7 +4,7 @@ var button = document.getElementById('convert'),
 	output = document.getElementById('output');
 
 
-// Fonction de convertion.
+// Fonction de conversion
 escapeHtmlEntities = function (txt) {
 
 	// E
@@ -30,7 +30,7 @@ escapeHtmlEntities = function (txt) {
 	return txt;
 }
 
-// Converti les entités HTML
+// Convertit les entités HTML
 button.onclick = function() {	
 
 	output.value = escapeHtmlEntities(input.value);
